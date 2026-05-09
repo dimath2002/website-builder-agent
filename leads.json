@@ -1,0 +1,22 @@
+[
+  {
+    "business_name": "Ταβέρνα Ο Μανώλης",
+    "business_type": "Παραδοσιακή Ταβέρνα",
+    "description": "Αυθεντική κρητική κουζίνα με μαγειρευτά, ψητά στα κάρβουνα και τοπικά κρασιά. Λειτουργούμε από το 1985 με αγάπη για την παράδοση.",
+    "phone": "28210 12345",
+    "email": "info@manolis-taverna.gr",
+    "address": "Ακτή Κουντουριώτη 15, Χανιά",
+    "city": "Χανιά",
+    "hours": "Καθημερινά 18:00 - 01:00"
+  },
+  {
+    "business_name": "Hair Studio Eleni",
+    "business_type": "Κομμωτήριο",
+    "description": "Σύγχρονο κομμωτήριο με εξειδίκευση σε χρώμα, balayage, και styling. Χρησιμοποιούμε premium προϊόντα Schwarzkopf και Wella.",
+    "phone": "28210 98765",
+    "email": "contact@hairstudio-eleni.gr",
+    "address": "Ελ. Βενιζέλου 42, Χανιά",
+    "city": "Χανιά",
+    "hours": "Τρι-Σαβ 9:00-20:00"
+  }
+]

@@ -1,0 +1,53 @@
+name: Build Websites for Leads
+
+on:
+  # Τρέχει όταν αλλάζει το leads.json
+  push:
+    paths:
+      - 'leads.json'
+      - 'builder.py'
+      - '.github/workflows/build-websites.yml'
+
+  # Τρέχει κάθε μέρα στις 9:00 το πρωί (UTC)
+  schedule:
+    - cron: '0 9 * * *'
+
+  # Manual trigger από το GitHub UI
+  workflow_dispatch:
+
+permissions:
+  contents: write  # Για να μπορεί να κάνει commits
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history για να βλέπει το processed.json
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Run Builder Agent
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_USERNAME: ${{ secrets.GH_USERNAME }}
+        run: python builder.py
+
+      - name: Commit processed leads
+        run: |
+          git config user.name "Builder Agent Bot"
+          git config user.email "bot@example.com"
+          git add processed.json results.md || true
+          git diff --staged --quiet || git commit -m "🤖 Processed leads + updated results"
+          git push || echo "Nothing to push"
