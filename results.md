@@ -1,6 +1,6 @@
 # 🌐 Generated Websites
 
-_Last update: 2026-06-02 12:40 UTC_
+_Last update: 2026-06-03 13:16 UTC_
 
 | Επιχείρηση | Live URL | Status |
 |------------|----------|--------|
